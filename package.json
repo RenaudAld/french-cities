@@ -1,0 +1,12 @@
+{
+  "name": "french-cities",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Geography game: place French cities on a map, with adaptive difficulty",
+  "scripts": {
+    "build-data": "node scripts/build-data.mjs",
+    "start": "node server/index.mjs"
+  },
+  "engines": { "node": ">=20" }
+}

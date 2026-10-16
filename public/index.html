@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Villes de France</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <h1>Villes de France</h1>
+    <div class="player">
+      <select id="player-select" aria-label="Joueur"></select>
+      <button id="stats-btn" type="button">Statistiques</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="map-wrap">
+      <svg id="map" role="img" aria-label="Carte de France"></svg>
+      <div class="map-tools">
+        <button id="zoom-in" type="button" aria-label="Zoomer">+</button>
+        <button id="zoom-out" type="button" aria-label="Dézoomer">−</button>
+        <button id="zoom-reset" type="button" aria-label="Recentrer">⟲</button>
+      </div>
+      <div id="tooltip" hidden></div>
+    </section>
+
+    <aside>
+      <div class="card prompt-card">
+        <div class="eyebrow" id="progress-label">—</div>
+        <div class="prompt" id="prompt">Choisissez un joueur</div>
+        <div class="hint" id="prompt-hint">Cliquez sur la carte pour placer la ville</div>
+      </div>
+
+      <div class="card result-card" id="result" hidden>
+        <div class="result-head">
+          <span class="badge" id="result-badge"></span>
+          <span id="result-distance"></span>
+          <span class="points" id="result-points"></span>
+        </div>
+        <div class="city-info">
+          <img id="city-image" alt="" hidden>
+          <div>
+            <h2 id="city-name"></h2>
+            <div class="city-status" id="city-status"></div>
+          </div>
+        </div>
+        <dl id="city-facts"></dl>
+        <p id="city-summary"></p>
+        <a id="city-link" target="_blank" rel="noopener">Wikipédia</a>
+        <button id="next-btn" type="button" class="primary">Suivant ⏎</button>
+      </div>
+
+      <div class="card" id="session-end" hidden>
+        <h2>Série terminée</h2>
+        <p id="session-summary"></p>
+        <button id="continue-btn" type="button" class="primary">Continuer ⏎</button>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <h3>Progression</h3>
+          <select id="mode-select" aria-label="Mode">
+            <option value="">Auto (adaptatif)</option>
+          </select>
+        </div>
+        <div id="tiers"></div>
+      </div>
+    </aside>
+  </main>
+
+  <dialog id="new-player">
+    <form method="dialog">
+      <label>Nom du joueur <input id="new-player-name" required maxlength="40" autocomplete="off"></label>
+      <div class="row">
+        <button value="cancel" formnovalidate>Annuler</button>
+        <button value="ok" class="primary">Créer</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="stats">
+    <div class="row"><h2>Forces & faiblesses</h2><button id="stats-close" type="button">Fermer</button></div>
+    <div id="stats-body"></div>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
